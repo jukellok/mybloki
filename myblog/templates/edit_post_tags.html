@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+  <h1>{{ post.title }}</h1>
+  <hr>
+  {% if g.user.is_authenticated() %}
+    <b>Current tags:</b><br>
+    {% for posttag in post.tags %}
+      <a class="btn btn-default" href="{{ url_for('delete_post_tag', id=posttag.id) }}">{{ posttag.name }}</a>
+    {% endfor %}
+    <br>
+    <br>
+    <b>Available tags:</b><br>
+    {% for tag in alltags %}
+      {% if tag not in post.tags %}
+        <a class="btn btn-default" href="{{ url_for('add_post_tag', id=tag.id) }}">{{ tag.name }}</a>
+      {% endif %}
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+  {% endif %}
+  <p><a class="btn btn-success" href="{{ url_for('view_post', id=post.id) }}">Done</a></p>
+{% endblock %}

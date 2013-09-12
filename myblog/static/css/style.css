@@ -1,0 +1,16 @@
+.post { white-space:pre-wrap; word-wrap:break-word; }
+.flash { background:yellow; text-align:center; }
+.app-container { margin:auto; width:800px; min-height:800px; background:#FFF; padding-top:25px; padding-bottom:25px; }
+.footer { background:#FFF; margin:auto; width:800px; padding-left:10px; }
+
+#titlefield { width:400px; }
+#contentfield { height:150px; }
+#tagfield { width:200px; }
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+
+  background:#888;
+}

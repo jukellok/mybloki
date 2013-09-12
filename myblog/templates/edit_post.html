@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+  {% if g.user.is_authenticated() %}
+    <form action="{{ url_for('finish_edit_post') }}" method="POST" onsubmit="return validatePost()">
+      <div class="form-group">
+        <input id="titlefield" type="text" placeholder="Title" name="title" value="{{ post.title }}" class="form-control">
+      </div>
+      <div class="form-group">
+        <textarea id="contentfield" name="body" placeholder="Content" class="form-control">{{ post.body|safe }}</textarea>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Done">
+      </div>
+    </form>
+  {% endif %}
+  <p><a class="btn btn-default" href="{{ url_for('view_post', id=post.id) }}">Cancel</a></p>
+{% endblock %}

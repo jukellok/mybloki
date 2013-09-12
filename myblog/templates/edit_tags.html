@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block body %}
+  {% if g.user.is_authenticated() %}
+    <table>
+      <form action="{{ url_for('add_tag') }}" method="POST" onsubmit="return validateTag()">
+        <tr>
+          <td><div class="form-group">
+            <input id="tagfield" type="text" placeholder="New tag" name="tag" class="form-control">
+          </div>
+          <td><div class="form-group">
+            <input class="btn btn-success" type="submit" value="Create">
+          </div>
+        </tr>
+      </form>
+    </table>
+    <hr>
+    {% for tag in tags %}
+      <table>
+        <tr>
+          <form action="{{ url_for('rename_tag', id=tag.id) }}" method="POST">
+            <td><div class="form-group">
+              <input type="text" placeholder="{{ tag.name }}" name="tag" class="form-control">
+            </div>
+            <td><div class="form-group">
+              <input class="btn btn-default" type="submit" value="Rename">
+            </div>
+          </form>
+          <td><p><a class="btn btn-warning" href="{{ url_for('delete_tag', id=tag.id) }}">Delete</a></p>
+        </tr>
+      </table>
+    {% else %}
+      No tags.
+    {% endfor %}
+  {% endif %}
+{% endblock %}
