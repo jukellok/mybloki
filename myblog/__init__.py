@@ -8,6 +8,3 @@ app = Flask(__name__)
 import myblog.config
 db = SQLAlchemy(app)
 import myblog.views
-
-if __name__ == '__main__':
-    app.run()
